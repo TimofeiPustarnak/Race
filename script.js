@@ -7,7 +7,7 @@ const body = document.querySelector('body');
 car.classList.add('car');
 
 function getQuantityElements (height) {
-  return document.documentElement.clientWidth / height + 1;
+  return document.documentElement.clientWidth / height + 2;
 }
 
 for (let i = 0; i < getQuantityElements(80); ++i)
@@ -62,13 +62,57 @@ const setting = {
   start: false,
   score: 0,
   speed: 10,
-  traffic: 3
+  traffic: 20,
+  enemySpeed: 1.2 + Math.random(),
+  enemySpeed1: 1.2 + Math.random(),
+  enemySpeed2: 1.2 + Math.random(),
+  enemySpeed3: 1.2 + Math.random(),
+  enemySpeed4: 1.2 + Math.random()
 };
+
+const enemy = document.createElement('div');
+enemy.classList.add('enemy');
+gameArea.appendChild(enemy);
+enemy.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+enemy.style.left = enemy.x + 'px';
+
+const enemy1 = document.createElement('div');
+enemy1.classList.add('enemy');
+enemy1.classList.add('enemy1');
+gameArea.appendChild(enemy1);
+enemy1.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+enemy1.style.left = enemy1.x + 'px';
+
+const enemy2 = document.createElement('div');
+enemy2.classList.add('enemy');
+enemy2.classList.add('enemy2');
+gameArea.appendChild(enemy2);
+enemy2.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+enemy2.style.left = enemy2.x + 'px';
+
+const enemy3 = document.createElement('div');
+enemy3.classList.add('enemy');
+enemy3.classList.add('enemy3');
+gameArea.appendChild(enemy3);
+enemy3.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+enemy3.style.left = enemy3.x + 'px';
+
+const enemy4 = document.createElement('div');
+enemy4.classList.add('enemy');
+enemy4.classList.add('enemy4');
+gameArea.appendChild(enemy4);
+enemy4.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+enemy4.style.left = enemy4.x + 'px';
+
+function getRandomInRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function playGame() {
   if (setting.start) {
     moveRoad();
-
+    enemyMove();
+    console.log(true);
     if (keys.ArrowLeft) {
       setting.x -= setting.speed;
     }
@@ -110,6 +154,44 @@ function playGame() {
     requestAnimationFrame(playGame);
   }
 }
+
+function enemyMove() {
+  enemy.x -= setting.speed * setting.enemySpeed;
+  enemy.style.left = enemy.x + 'px';
+  if (enemy.x  < -100) {
+    enemy.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+    setting.enemySpeed = 1.2 + Math.random();
+  }
+
+  enemy1.x -= setting.speed * setting.enemySpeed1;
+  enemy1.style.left = enemy1.x + 'px';
+  if (enemy1.x < -100) {
+    enemy1.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+    setting.enemySpeed1 = 1.2 + Math.random();
+  }
+
+  enemy2.x -= setting.speed * setting.enemySpeed2;
+  enemy2.style.left = enemy2.x + 'px';
+  if (enemy2.x < -100) {
+    enemy2.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+    setting.enemySpeed2 = 1.2 + Math.random();
+  }
+
+  enemy3.x -= setting.speed * setting.enemySpeed3;
+  enemy3.style.left = enemy3.x + 'px';
+  if (enemy3.x < -100) {
+    enemy3.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+    setting.enemySpeed3 = 1.2 + Math.random();
+  }
+
+  enemy4.x -= setting.speed * setting.enemySpeed4;
+  enemy4.style.left = enemy4.x + 'px';
+  if (enemy4.x < -100) {
+    enemy4.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
+    setting.enemySpeed4 = 1.2 + Math.random();
+  }
+}
+
 
 function moveRoad() {
   lines.forEach(function(line){
