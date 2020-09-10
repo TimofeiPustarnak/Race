@@ -3,6 +3,7 @@ const start = document.querySelector('.start');
 const gameArea = document.querySelector('.game-area');
 const car = document.createElement('div');
 const body = document.querySelector('body');
+const scoreValue = document.querySelector('.score__num');
 
 car.classList.add('car');
 
@@ -70,6 +71,10 @@ const setting = {
   enemySpeed4: 1.2 + Math.random()
 };
 
+// console.log(scoreValue);
+scoreValue.textContent = `${setting.score}`;
+
+
 const enemy = document.createElement('div');
 enemy.classList.add('enemy');
 gameArea.appendChild(enemy);
@@ -110,6 +115,7 @@ function getRandomInRange(min, max) {
 
 function playGame() {
   if (setting.start) {
+    renderScore();
     chekCrush();
     moveRoad();
     enemyMove();
@@ -155,6 +161,10 @@ function playGame() {
   }
 }
 
+function renderScore() {
+  scoreValue.textContent = `${setting.score}`;
+}
+
 function chekCrush() {
   if (car.offsetLeft + 100 >= enemy.offsetLeft && car.offsetLeft <= enemy.offsetLeft + 100 && car.offsetTop + 50 >= enemy.offsetTop && car.offsetTop < enemy.offsetTop + 50)
   {
@@ -186,6 +196,7 @@ function enemyMove() {
   enemy.x -= setting.speed * setting.enemySpeed;
   enemy.style.left = enemy.x + 'px';
   if (enemy.x  < -100) {
+    setting.score += 10;
     enemy.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed = 1.2 + Math.random();
   }
@@ -193,6 +204,7 @@ function enemyMove() {
   enemy1.x -= setting.speed * setting.enemySpeed1;
   enemy1.style.left = enemy1.x + 'px';
   if (enemy1.x < -100) {
+    setting.score += 10;
     enemy1.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed1 = 1.2 + Math.random();
   }
@@ -200,6 +212,7 @@ function enemyMove() {
   enemy2.x -= setting.speed * setting.enemySpeed2;
   enemy2.style.left = enemy2.x + 'px';
   if (enemy2.x < -100) {
+    setting.score += 10;
     enemy2.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed2 = 1.2 + Math.random();
   }
@@ -207,6 +220,7 @@ function enemyMove() {
   enemy3.x -= setting.speed * setting.enemySpeed3;
   enemy3.style.left = enemy3.x + 'px';
   if (enemy3.x < -100) {
+    setting.score += 10;
     enemy3.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed3 = 1.2 + Math.random();
   }
@@ -214,6 +228,7 @@ function enemyMove() {
   enemy4.x -= setting.speed * setting.enemySpeed4;
   enemy4.style.left = enemy4.x + 'px';
   if (enemy4.x < -100) {
+    setting.score += 10;
     enemy4.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed4 = 1.2 + Math.random();
   }
@@ -222,7 +237,7 @@ function enemyMove() {
 
 function moveRoad() {
   lines.forEach(function(line){
-    line.x -= setting.speed;
+    line.x -= setting.speed * .8;
     line.style.left = line.x + 'px';
 
     if(line.x < -80) {
@@ -231,7 +246,7 @@ function moveRoad() {
   })
 
   lines1.forEach(function(line1){
-    line1.x -= setting.speed;
+    line1.x -= setting.speed * .8;
     line1.style.left = line1.x + 'px';
     line1.style.left = line1.x + 'px';
 
@@ -241,7 +256,7 @@ function moveRoad() {
   })
 
   lines2.forEach(function(line2){
-    line2.x -= setting.speed;
+    line2.x -= setting.speed * .8;
     line2.style.left = line2.x + 'px';
     line2.style.left = line2.x + 'px';
 
@@ -251,7 +266,7 @@ function moveRoad() {
   })
 
   lines3.forEach(function(line3){
-    line3.x -= setting.speed;
+    line3.x -= setting.speed * .8;
     line3.style.left = line3.x + 'px';
     line3.style.left = line3.x + 'px';
 

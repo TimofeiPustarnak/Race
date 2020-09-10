@@ -79,6 +79,7 @@
    text-align: center;
    right: calc((100vw - 150px) / 2);
    top: 0;
+   margin-top: 10px;
  }
 
  .line, .line1, .line2, .line3 {
