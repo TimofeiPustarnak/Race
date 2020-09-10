@@ -2,6 +2,7 @@ const score = document.querySelector('.score');
 const start = document.querySelector('.start');
 const gameArea = document.querySelector('.game-area');
 const car = document.createElement('div');
+const body = document.querySelector('body');
 
 car.classList.add('car');
 
@@ -18,7 +19,7 @@ const setting = {
   speed: 5
 };
 
-console.log(gameArea.clientWidth);
+console.log(body.clientWidth);
 function playGame() {
   if (setting.start) {
     if (keys.ArrowLeft) {
