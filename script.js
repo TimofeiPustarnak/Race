@@ -15,11 +15,48 @@ const keys = {
 const setting = {
   start: false,
   score: 0,
-  speed: 3
+  speed: 5
 };
 
+console.log(gameArea.clientWidth);
 function playGame() {
   if (setting.start) {
+    if (keys.ArrowLeft) {
+      setting.x -= setting.speed;
+    }
+
+    if (keys.ArrowRight) {
+      setting.x += setting.speed;
+    }
+
+    if (keys.ArrowDown) {
+      setting.y += setting.speed;
+    }
+
+    if (keys.ArrowUp) {
+      setting.y -= setting.speed;
+    }
+
+    if (setting.x <= 250 && setting.x >= 0)
+    {
+      car.style.left = setting.x + 'px';
+    } else 
+    {
+      if (setting.x > 250)
+      setting.x = 250;
+      if (setting.x < 0)
+      setting.x = 0;
+    }
+
+    if (setting.y >= 0)
+    {
+      car.style.top = setting.y + 'px';
+    } else 
+    {
+      if (setting.y < 0)
+      setting.y = 0;
+    }
+
     requestAnimationFrame(playGame);
   }
 }
@@ -38,7 +75,7 @@ function stopRun(event) {
   if (event.key == 'ArrowUp' || event.key == 'ArrowDown' 
     || event.key == 'ArrowRight' || event.key == 'ArrowLeft') {
       event.preventDefault();
-      keys[event.key] = true;
+      keys[event.key] = false;
     }
 }
 
@@ -48,6 +85,8 @@ start.addEventListener('click', () => {
   requestAnimationFrame(playGame);
   gameArea.appendChild(car);
   // *  вставляем ребенка в элемент
+  setting.x = car.offsetLeft;
+  setting.y = car.offsetTop;
 });
 
 document.addEventListener('keydown', startRun);
