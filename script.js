@@ -7,7 +7,7 @@ const body = document.querySelector('body');
 car.classList.add('car');
 
 function getQuantityElements (height) {
-  return document.documentElement.clientWidth / height + 2;
+  return document.documentElement.clientWidth / height + 3;
 }
 
 for (let i = 0; i < getQuantityElements(80); ++i)
@@ -110,9 +110,9 @@ function getRandomInRange(min, max) {
 
 function playGame() {
   if (setting.start) {
+    chekCrush();
     moveRoad();
     enemyMove();
-    console.log(true);
     if (keys.ArrowLeft) {
       setting.x -= setting.speed;
     }
@@ -152,6 +152,33 @@ function playGame() {
     }
 
     requestAnimationFrame(playGame);
+  }
+}
+
+function chekCrush() {
+  if (car.offsetLeft + 100 >= enemy.offsetLeft && car.offsetLeft <= enemy.offsetLeft + 100 && car.offsetTop + 50 >= enemy.offsetTop && car.offsetTop < enemy.offsetTop + 50)
+  {
+    setting.start = false;
+  }
+
+  if (car.offsetLeft + 100 >= enemy1.offsetLeft && car.offsetLeft <= enemy1.offsetLeft + 100 && car.offsetTop + 50 >= enemy1.offsetTop && car.offsetTop < enemy1.offsetTop + 50)
+  {
+    setting.start = false;
+  }
+
+  if (car.offsetLeft + 100 >= enemy2.offsetLeft && car.offsetLeft <= enemy2.offsetLeft + 100 && car.offsetTop + 50 >= enemy2.offsetTop && car.offsetTop < enemy2.offsetTop + 50)
+  {
+    setting.start = false;
+  }
+
+  if (car.offsetLeft + 100 >= enemy3.offsetLeft && car.offsetLeft <= enemy3.offsetLeft + 100 && car.offsetTop + 50 >= enemy3.offsetTop && car.offsetTop < enemy3.offsetTop + 50)
+  {
+    setting.start = false;
+  }
+
+  if (car.offsetLeft + 100 >= enemy4.offsetLeft && car.offsetLeft <= enemy4.offsetLeft + 100 && car.offsetTop + 50 >= enemy4.offsetTop && car.offsetTop < enemy4.offsetTop + 50)
+  {
+    setting.start = false;
   }
 }
 
