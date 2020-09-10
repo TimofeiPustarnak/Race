@@ -6,16 +6,50 @@ const body = document.querySelector('body');
 
 car.classList.add('car');
 
-for (let i = 0; i < 30; ++i)
+function getQuantityElements (height) {
+  return document.documentElement.clientWidth / height + 1;
+}
+
+for (let i = 0; i < getQuantityElements(80); ++i)
 {
   const line = document.createElement('div');
   line.classList.add('line');
-  line.style.left = (i * 75) + 'px';
-  line.x = i * 75;
+  line.style.left = (i * 80) + 'px';
+  line.x = i * 80;
   gameArea.appendChild(line);
 }
 
+for (let i = 0; i < getQuantityElements(80); ++i)
+{
+  const line1 = document.createElement('div');
+  line1.classList.add('line1');
+  line1.style.left = (i * 80) + 'px';
+  line1.x = i * 80;
+  gameArea.appendChild(line1);
+}
+
+for (let i = 0; i < getQuantityElements(80); ++i)
+{
+  const line2 = document.createElement('div');
+  line2.classList.add('line2');
+  line2.style.left = (i * 80) + 'px';
+  line2.x = i * 80;
+  gameArea.appendChild(line2);
+}
+
+for (let i = 0; i < getQuantityElements(80); ++i)
+{
+  const line3 = document.createElement('div');
+  line3.classList.add('line3');
+  line3.style.left = (i * 80) + 'px';
+  line3.x = i * 80;
+  gameArea.appendChild(line3);
+}
+
 let lines = document.querySelectorAll('.line');
+let lines1 = document.querySelectorAll('.line1');
+let lines2 = document.querySelectorAll('.line2');
+let lines3 = document.querySelectorAll('.line3');
 
 const keys = {
   ArrowUp: false,
@@ -27,7 +61,8 @@ const keys = {
 const setting = {
   start: false,
   score: 0,
-  speed: 5
+  speed: 10,
+  traffic: 3
 };
 
 function playGame() {
@@ -81,10 +116,41 @@ function moveRoad() {
     line.x -= setting.speed;
     line.style.left = line.x + 'px';
 
-    if(line.x < -50) {
-      line.x = document.documentElement.clientWidth + (75 - document.documentElement.clientWidth % 75) + 25;
+    if(line.x < -80) {
+      line.x = document.documentElement.clientWidth + (80 - document.documentElement.clientWidth % 80);
     }
   })
+
+  lines1.forEach(function(line1){
+    line1.x -= setting.speed;
+    line1.style.left = line1.x + 'px';
+    line1.style.left = line1.x + 'px';
+
+    if(line1.x < -80) {
+      line1.x = document.documentElement.clientWidth + (80 - document.documentElement.clientWidth % 80);
+    }
+  })
+
+  lines2.forEach(function(line2){
+    line2.x -= setting.speed;
+    line2.style.left = line2.x + 'px';
+    line2.style.left = line2.x + 'px';
+
+    if(line2.x < -80) {
+      line2.x = document.documentElement.clientWidth + (80 - document.documentElement.clientWidth % 80);
+    }
+  })
+
+  lines3.forEach(function(line3){
+    line3.x -= setting.speed;
+    line3.style.left = line3.x + 'px';
+    line3.style.left = line3.x + 'px';
+
+    if(line3.x < -80) {
+      line3.x = document.documentElement.clientWidth + (80 - document.documentElement.clientWidth % 80);
+    }
+  })
+
 }
 
 function startRun(event) {

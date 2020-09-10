@@ -14,7 +14,7 @@
    display: none;
  }
 
- .car {
+ .car, .enemy {
    width: 100px;
    height: 50px;
    background: transparent url(../image/player.png) center / cover no-repeat;
@@ -22,6 +22,10 @@
    position: absolute;
    left: 0px;
    bottom: 200px;
+ }
+
+ .enemy {
+  background: transparent url(../image/enemy2.png) center / cover no-repeat;
  }
 
  .game-area {
@@ -56,11 +60,48 @@
    top: 0;
  }
 
- .line {
+ .line, .line1, .line2, .line3 {
    position: absolute;
    height: 10px;
    width: 50px;
    background: white;
    left: 0px;
-   top: 220px;
+   top: 82px;
  }
+
+ .line1 {
+   top: 174px;
+ }
+
+ .line2 {
+   top: 266px;
+}
+
+.line3 {
+   top: 358px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
