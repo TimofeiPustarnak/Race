@@ -1,3 +1,4 @@
+@import url(reset.css);
 @import url(normalize.css);
 @import url(scroll.css);
 @import url(fonts/inter.css);
@@ -20,15 +21,16 @@
    /* * transparent прозрачный фон */
    position: absolute;
    left: 0px;
-   bottom: 275px;
+   bottom: 200px;
  }
 
  .game-area {
-   width: 100%;
+   width: 100vw;
    height: 450px;
    position: relative;
    margin: 0;
    background: #222;
+   display: block;
  }
 
  .padd {
@@ -42,7 +44,7 @@
    width: 200px;
    text-align: center;
    right: calc((100vw - 200px) / 2);
-   top: 50px;
+   top: 40px;
  }
 
  .score {
@@ -52,4 +54,13 @@
    text-align: center;
    right: calc((100vw - 150px) / 2);
    top: 0;
+ }
+
+ .line {
+   position: absolute;
+   height: 10px;
+   width: 50px;
+   background: white;
+   left: 0px;
+   top: 220px;
  }

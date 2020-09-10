@@ -6,6 +6,17 @@ const body = document.querySelector('body');
 
 car.classList.add('car');
 
+for (let i = 0; i < 30; ++i)
+{
+  const line = document.createElement('div');
+  line.classList.add('line');
+  line.style.left = (i * 75) + 'px';
+  line.x = i * 75;
+  gameArea.appendChild(line);
+}
+
+let lines = document.querySelectorAll('.line');
+
 const keys = {
   ArrowUp: false,
   ArrowDown: false,
@@ -19,9 +30,10 @@ const setting = {
   speed: 5
 };
 
-console.log(body.clientWidth);
 function playGame() {
   if (setting.start) {
+    moveRoad();
+
     if (keys.ArrowLeft) {
       setting.x -= setting.speed;
     }
@@ -38,28 +50,41 @@ function playGame() {
       setting.y -= setting.speed;
     }
 
-    if (setting.x <= 250 && setting.x >= 0)
+    if (setting.x <= gameArea.clientWidth - 100 && setting.x >= 0)
     {
       car.style.left = setting.x + 'px';
     } else 
     {
-      if (setting.x > 250)
-      setting.x = 250;
+      if (setting.x > gameArea.clientWidth - 100)
+      setting.x = gameArea.clientWidth - 100;
       if (setting.x < 0)
       setting.x = 0;
     }
 
-    if (setting.y >= 0)
+    if (setting.y >= 0 && setting.y <= 400)
     {
       car.style.top = setting.y + 'px';
     } else 
     {
       if (setting.y < 0)
       setting.y = 0;
+      if (setting.y > 400)
+      setting.y = 400;
     }
 
     requestAnimationFrame(playGame);
   }
+}
+
+function moveRoad() {
+  lines.forEach(function(line){
+    line.x -= setting.speed;
+    line.style.left = line.x + 'px';
+
+    if(line.x < -50) {
+      line.x = document.documentElement.clientWidth + (75 - document.documentElement.clientWidth % 75) + 25;
+    }
+  })
 }
 
 function startRun(event) {
