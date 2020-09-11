@@ -197,6 +197,10 @@ function enemyMove() {
   enemy.style.left = enemy.x + 'px';
   if (enemy.x  < -100) {
     setting.score += 10;
+
+    if (setting.score % 100 == 0)
+    ++setting.speed;
+
     enemy.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed = 1.2 + Math.random();
   }
@@ -205,6 +209,10 @@ function enemyMove() {
   enemy1.style.left = enemy1.x + 'px';
   if (enemy1.x < -100) {
     setting.score += 10;
+
+    if (setting.score % 100 == 0)
+    ++setting.speed;
+
     enemy1.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed1 = 1.2 + Math.random();
   }
@@ -213,6 +221,10 @@ function enemyMove() {
   enemy2.style.left = enemy2.x + 'px';
   if (enemy2.x < -100) {
     setting.score += 10;
+
+    if (setting.score % 100 == 0)
+    ++setting.speed;
+
     enemy2.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed2 = 1.2 + Math.random();
   }
@@ -221,6 +233,10 @@ function enemyMove() {
   enemy3.style.left = enemy3.x + 'px';
   if (enemy3.x < -100) {
     setting.score += 10;
+
+    if (setting.score % 100 == 0)
+    ++setting.speed;
+
     enemy3.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed3 = 1.2 + Math.random();
   }
@@ -229,6 +245,10 @@ function enemyMove() {
   enemy4.style.left = enemy4.x + 'px';
   if (enemy4.x < -100) {
     setting.score += 10;
+
+    if (setting.score % 100 == 0)
+    ++setting.speed;
+
     enemy4.x = document.documentElement.clientWidth + getRandomInRange(0, setting.traffic) * document.documentElement.clientWidth * .1;
     setting.enemySpeed4 = 1.2 + Math.random();
   }
